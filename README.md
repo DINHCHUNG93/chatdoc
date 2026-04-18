@@ -1,3 +1,52 @@
+
+xây dựng bộ não riêng cho doanh nghiệp: giải mã onyx - bá chủ mã nguồn mở.
+
+đây là con hàng ôm hơn 20.000 stars trên GitHub, dư sức giúp ae tự tay dựng lên một hệ thống tri thức (knowledge base) đánh bật cả ChatGPT bản enterprise.
+
+hệ thống này tự trang bị máy tìm kiếm lai (hybrid search) và mạng lưới tri thức (knowledge graph) siêu việt. đến mức nội bộ Netflix với 14.000 nhân sự cũng đang phải dựa lưng vào nó để dọn dẹp mớ rác dữ liệu phân mảnh tàn khốc của họ.
+
+1. bài toán cốt lõi mà onyx đập tan
+data công ty ae có đang rải rác khắp nơi không? tin nhắn trên Slack, file cất mốc trong Google Drive, rồi lại chắp vá thêm hàng tá ghi chú trên Notion. mỗi lần tìm một quy trình hay tài liệu là một lần mò kim đáy bể.
+onyx sinh ra để kết liễu thảm họa này.
+
+nó cắm sẵn hơn 50 cái connector (đầu nối) ăn liền. tự động hút data từ mọi nền tảng phổ thông về một mối. đỉnh cao nhất là nó kế thừa nguyên vẹn bộ phân quyền (permissions) có sẵn của doanh nghiệp.
+đây không phải là một hệ thống RAG băm tài liệu ngớ ngẩn. nó tự build các liên kết chéo giữa các file để tạo ra một mạng lưới tri thức AI hoàn chỉnh. nó đọc hiểu bối cảnh sâu như một chuyên gia nghiên cứu thực thụ: chẻ nhỏ câu hỏi phức tạp ra và nhả lại đáp án cực kỳ sắc lẹm.
+
+2. đưa vào thực chiến thế nào?
+lõi công nghệ của con này cực kỳ tinh gọn: backend chạy Python, frontend dùng Next.js.
+nó hỗ trợ Docker tận răng, ae chỉ việc ốp thẳng lên server là chạy mượt mà.
+
+khi hệ thống đã lên luồng, ae chui vào màn hình quản trị và tha hồ nặn ra dàn trợ lý AI chuyên biệt cho từng phòng ban.
+nó cân hết từ OpenAI đến Claude. muốn cắm VLLM để chạy model nội bộ (local)? vã được luôn.
+đặc biệt, chỉ cần nắm được giao thức MCP, ae có thể nhồi thêm hàng tá vũ khí tự động hóa hạng nặng vào để con AI này trực tiếp thực thi công việc.
+
+3. chốt chặn rủi ro bảo mật (tử huyệt phải nhớ)
+một khi đã nạp toàn bộ tài liệu mật của công ty vào máy, thì bài toán phân quyền là mạng sống.
+
+mặc dù onyx trang bị SSO và cô lập quyền đọc rất khét, nhưng dưới góc độ quản trị rủi ro, anh nhấn mạnh: phải bưng cái não lõi này nhét thẳng vào mạng nội bộ (intranet) có kiểm soát khép kín.
+trong trường hợp kẹt phần cứng mà bắt buộc phải xài API của OpenAI để xử lý?
+vào hệ thống khóa chết ngay cái giới hạn ngân sách (spending cap) lại. nạp hàng terabyte tài liệu vào mà thả rông luồng API thì tiền núi cũng cháy sạch trong một đêm.
+
+ae nào đang đi tìm một kho chứa data bảo mật tại gia, hoặc muốn tự tay tối ưu lại hệ thống vận hành, thì bưng ngay con này về mổ xẻ.
+link bốc hàng tận gốc cho ae mổ xẻ và ốp vào hệ thống:
+
+• trang chủ: https://onyx.app/
+• mã nguồn github: https://github.com/onyx-dot-app/onyx
+
+cách đưa vào thực chiến? cực kỳ đơn giản. mở terminal lên và phang thẳng chuỗi lệnh này vào:
+
+bước 1: kéo toàn bộ mã nguồn về máy.
+git clone https://github.com/onyx-dot-app/onyx.git
+
+bước 2: chui vào đúng thư mục và kích hoạt luồng hệ thống qua docker.
+cd onyx/deployment/docker_compose
+docker compose -p onyx-stack up -d
+
+xong xuôi. hệ thống sẽ tự động build và chạy ngầm. ae chỉ việc truy cập vào giao diện và bắt đầu nhào nặn não bộ cho doanh nghiệp.
+
+#vinmediaglobal #onyx #AI #rag #automation #knowledgemanagement #digitalmarketing
+
+
 <!-- DANSWER_METADATA={"link": "https://github.com/danswer-ai/danswer/blob/main/README.md"} -->
 
 <h2 align="center">
